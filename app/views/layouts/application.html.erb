@@ -11,6 +11,9 @@
   </head>
 
   <body>
+  <%= link_to "Sign up", signup_path %>
+  <%= link_to "Login in", login_path %>
+  <%= link_to "Sign out", signout_path, method: :delete %>
     <%= yield %>
   </body>
 </html>
