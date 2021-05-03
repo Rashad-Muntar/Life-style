@@ -11,9 +11,10 @@
   </head>
 
   <body>
-  <%= link_to "Sign up", signup_path %>
-  <%= link_to "Login in", login_path %>
-  <%= link_to "Sign out", signout_path, method: :delete %>
+  <%= current_user.id %>
+  <%= show_sign_in %>
+  <%= show_sign_up %>
+  <%= show_sign_out %>
     <%= yield %>
   </body>
 </html>
