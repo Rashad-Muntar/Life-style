@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.file_field :image %>
   </div>
 
  <div class="field">
     <%= form.label :category %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, {prompt: "Select Category"}%>
    
   </div>
 

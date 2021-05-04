@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "articles#index"
-  resources :articles
+  resources :articles do
+    resources :votes 
+  end
   get "signup", to: "users#new"
   delete "signout", to: "sessions#destroy"
   resources :users, except: [:new]

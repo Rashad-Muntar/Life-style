@@ -8,12 +8,13 @@
 <p>
   <strong>Text:</strong>
   <%= @article.text %>
+  <%= @article.category.name %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @article.image %>
-</p>
+<% if @article.image.attached? %>
+  <%= image_tag @article.image %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
