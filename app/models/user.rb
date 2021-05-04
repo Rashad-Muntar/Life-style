@@ -5,5 +5,6 @@ class User < ApplicationRecord
 
     has_many :articles
     has_many :votes
+    has_many :comments
     before_save { name.downcase! }
 end

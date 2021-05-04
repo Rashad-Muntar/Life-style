@@ -7,5 +7,6 @@ class Article < ApplicationRecord
     belongs_to :author, foreign_key: :user_id, class_name: "User"
     belongs_to :category, foreign_key: :category_id, class_name: "Category"
     has_many :votes, dependent: :destroy
+    has_many :comments,  dependent: :destroy
 
 end
