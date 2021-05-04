@@ -4,5 +4,6 @@ class User < ApplicationRecord
     has_secure_password
 
     has_many :articles
+    has_many :votes
     before_save { name.downcase! }
 end
