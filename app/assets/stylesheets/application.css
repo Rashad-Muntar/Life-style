@@ -45,4 +45,25 @@
  .content-wrapper{
     z-index: 1;
     color:  white;
+    padding-top: 20px;
+ }
+
+ .img-cat{
+     background-color: black;
+     width: 100%;
+     opacity: 0.6;
+     height: 100%;
+     padding: 10px 7px;
+     border-bottom: 5px solid rgb(255, 207, 74);
+     z-index: 3;
+     
+ }
+
+ .title{
+    background: black;
+    opacity: 0.6;
+    position: absolute;
+    top: 65%; 
+    padding: 10px 10px;
+    left: 1%;
  }

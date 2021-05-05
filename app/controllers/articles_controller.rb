@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.order(votes: :asc)
     @categories = Category.all
-    
   end
 
   # GET /articles/1 or /articles/1.json

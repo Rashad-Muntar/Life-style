@@ -42,4 +42,15 @@ module ApplicationHelper
         end
         content.html_safe
       end
+
+      def latest_article_background(category)
+        category.articles.last.image.to_s.html_safe if category.articles.any?
+      end
+
+      def category_article_link(category)
+        return unless category.articles.any?
+        link_title = category.articles.pluck(:title).last.truncate(27)
+        article = category.articles.last
+        link_to(link_title, article_path(article))
+      end
 end

@@ -28,35 +28,12 @@
   </div>
   </div>
 </div>
-
-
-<% voteChecker = 0 %>
-<% heighest = "" %>
-<% @articles.each do |article| %>
- <% if article.votes.length > voteChecker %>
-    <% voteChecker = article.votes.count %>
-    <% heighest = article %>
- <% end %>
-<% end %>
-
-<% if heighest.image.attached? %>
-    <div class="header-img-wrapper" style="background-image: url(<%= rails_blob_url( heighest.image ) %>)">
-  <% end %>
-<div class="content-wrapper">
-  <%= heighest.title %>
-  <%= heighest.category.name %>
+  
 </div>
        
     </div>
 
-
-
-
-
-
-    
-    <div class="container">
     <%= yield %>
-    </div>
+  
   </body>
 </html>
