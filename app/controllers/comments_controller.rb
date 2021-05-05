@@ -1,21 +1,17 @@
 class CommentsController < ApplicationController
 
     def create
-        @comment = Comment.new(comment_params)
-        @comment.user = current_user
-        @comment.article = params[:article_id]
-        if @comment.save
-            redirect_to posts_path, notice: 'Comment was successfully created.'
-            redirect_to article_url(params[:article_id])
-        else
-            redirect_to article_url(params[:article_id])
+        @article = Article.find(params[:article_id])
+        @comment = @article.comments.new(comment_params)
+        respond_to do |format|
+          if @comment.save
+            format.html { redirect_to @article, notice: 'Comment was successfully created.' } # changed the redirect to @post
+          end
         end
-        
     end
-
 
     private
     def comment_params
-        params.require(:comment).permit(:content :author_id)
-    end
+        params.require(:comment).permit(:content, :name)
+      end
 end

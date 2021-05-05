@@ -1,0 +1,17 @@
+<h1>Category show page</h1>
+
+<%= @category.name %>
+<% @category.articles.each do |article| %>
+
+    <%= link_to article do %>
+        <div>
+            <% if article.image.attached? %>
+            <%= image_tag article.image, height: '70', width: '70' %>
+            <% end %>
+            <%= article.title %>
+            <%= article.text %>
+        </div>
+    <% end %>
+
+   
+<% end %>

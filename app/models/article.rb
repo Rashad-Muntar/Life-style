@@ -9,4 +9,7 @@ class Article < ApplicationRecord
     has_many :votes, dependent: :destroy
     has_many :comments,  dependent: :destroy
 
+    scope :most_popular_articles, lambda {
+        where(id: all_published_articles.joins(:votes).group(:id).count.sort_by { |_k, v| v }.last(4).map { |a, _b| a })
+      }
 end

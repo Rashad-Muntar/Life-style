@@ -3,11 +3,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.order(votes: :asc)
+    @categories = Category.all
+    
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    @categories = Category.all
   end
 
   # GET /articles/new
@@ -56,6 +59,8 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

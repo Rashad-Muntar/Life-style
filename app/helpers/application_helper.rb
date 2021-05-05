@@ -26,4 +26,20 @@ module ApplicationHelper
           button_to('vote!', article_votes_path(id: vote, article_id: article.id))
         end
       end
+
+
+      def show_article
+        content = ''
+        articles.each do |post|
+          content << "<li class='post'>"
+          content << link_to(link_to(post.user.name, user_path(post.user), class: 'post-author'))
+          content << content_tag(:div, (render partial: 'posts/like', locals: { post: post }))
+          content << content_tag(:p, post.content)
+          content << content_tag(:div, (render partial: 'comments/comment', collection: post.comments),
+                                 class: 'post-comments-section')
+          content << content_tag(:div, (render partial: 'posts/form', locals: { post: post }))
+          content << '</li>'
+        end
+        content.html_safe
+      end
 end
