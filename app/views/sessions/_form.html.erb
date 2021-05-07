@@ -1,18 +1,7 @@
+<div class="login">
 <%= form_with(url: login_path, scope: :session, local: true) do |form| %>
-  
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-
-    <div class="field">
-        <%= form.label :password %>
-        <%= form.password_field :password %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit "Log in" %>
-    </div>
-
-    
+      <%= form.text_field :name, placeholder:"Enter your name" %>
+        <%= form.password_field :paswword, placeholder:"Enter password"%>
+      <%= form.submit "Log in", class:"btn btn-primary btn-block btn-large" %>    
   <% end %>
+  </div>

@@ -43,14 +43,68 @@ module ApplicationHelper
         content.html_safe
       end
 
-      def latest_article_background(category)
-        category.articles.last.image.to_s.html_safe if category.articles.any?
+      def show_article_in_cat
+        content = ''
+        @category.articles.each do |article|
+          content << "<div class='cat-card'>"
+          if article.image.attached?
+            content << image_tag(article.image)
+          end
+          content << "<div class='cat-card-content'>"
+              content << link_to(article.title, article)
+              content << content_tag(:p, article.text)
+          content << "</div>"
+         content << "</div>"
+        end
+        content.html_safe
       end
 
       def category_article_link(category)
         return unless category.articles.any?
+    
         link_title = category.articles.pluck(:title).last.truncate(27)
         article = category.articles.last
-        link_to(link_title, article_path(article))
+        link_to(link_title, article_path(article), class: 'link-title underline')
+      end
+
+      def show_featured
+          content = ''
+          @featured.each do |category|
+            content << "<div class='index-cat-card'>"
+              content << content_tag(:p, category.name)
+              content << image_tag(category.articles.last.image)
+              content << content_tag(:p, category.articles.pluck(:title).last)
+              content << "</div>"
+          end
+          content.html_safe
+      end
+
+      def header_article_show
+        content = ""
+        voteChecker = 0
+        heighest = ''
+        @articles.each do |article|
+          if article.votes.length > voteChecker
+            voteChecker = article.votes.count
+            heighest = article
+          end
+        end
+        content << "<div class='header-img-wrapper'>"
+        if heighest.image.attached? 
+            content << image_tag(heighest.image, class:"header-img") do
+            content << content_tag(:span, heighest.category.name, class:"img-cat")
+            content << content_tag(:span, heighest.title, class:"heighest.title")
+            end
+            content << "</div>"
+        end
+        content.html_safe
+      end
+
+      def show_cat_links
+        content = ""
+        @categories.each do |category|
+          content << link_to(category.name.upcase, category, class:"categories")
+        end
+        content.html_safe
       end
 end

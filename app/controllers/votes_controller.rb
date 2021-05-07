@@ -3,9 +3,7 @@ class VotesController < ApplicationController
 
     def create
       @vote = current_user.votes.new(article_id: params[:article_id])
-  
       if @vote.save
-  
         redirect_to article_url(params[:article_id]), notice: 'You voted a post.'
       else
         redirect_to articles_path, alert: 'You cannot you hav already voted this post.'

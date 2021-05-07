@@ -14,17 +14,16 @@
   <div class="navs">
   <div class="nav-content">
   <div class="left">
-  <span class="nav-brand">Africina</span>
+  <span><%= link_to "Crytonica", root_path, class:"logo" %></span>
   </div>
   <div class="center">
-    <% @categories.each do |category| %>
-      <%= link_to category.name.capitalize, category %>
-    <% end %>
+   <%= show_cat_links %>
   </div>
   <div class="right">
       <span><%= show_sign_in %></span> 
       <span><%= show_sign_up %></span>
       <span><%= show_sign_out %></span>
+
   </div>
   </div>
 </div>

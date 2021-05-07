@@ -1,29 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-  <%= @article.category.name %>
-</p>
 
-<% if @article.image.attached? %>
-  <%= image_tag @article.image %>
-<% end %>
 
-<span>
-<%= vote_unvote(@article) %>
-</span>
+<section class="show-container">
+<%= link_to 'Back', articles_path %>
+  <section class="img-section">
+
+      <div class="top-detail">
+          <div> 
+            <p class="show category-name" ><%= @article.category.name %></p>
+            <p><%= @article.title %></p>
+              <div class="time-posted">
+                <small>Published by <%= @article.author.name %> </small>
+                <small>posted <%= time_ago_in_words(@article.created_at) %> ago </small>
+              </div>
+          </div>
+
+          <div class="vote">
+            <span><%= vote_unvote(@article) %></span> 
+             <span><small><%= @article.votes.count %></small></span>
+          </div>
+      </div>
+
+
+      <div class="img-wrapper">
+        <div class="img_div">
+        <% if @article.image.attached? %>
+        <%= image_tag @article.image %>
+        <% end %>
+        </div>
+
+        <p> <%= @article.text %> </p>
+
+        <section class="comment-setion">
+          <div class="comment-count"> <%= pluralize(@article.comments.count, "comment") %> </div>
+          <%= render @article.comments %>
+
+          <%= render partial: 'comments/form' %>
+          </section>
+
+      </div>
+
+    </section>
+
+    <section>
+    <%= show_article_in_cat %>
+    </section
+
+</section>
+
+
+<%= show_article_in_cat %>
 
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
 
 
-<%= render @article.comments %>
-
-<%= render partial: 'comments/form' %>
