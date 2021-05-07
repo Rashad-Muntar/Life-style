@@ -12,7 +12,5 @@ RSpec.describe Article, type: :model do
     it { should belong_to(:category) }
     it { should have_many(:votes).dependent(:destroy) }
     it { should have_many(:comments).dependent(:destroy) }
+  end
 end
-end
-
-
