@@ -7,8 +7,14 @@ ruby '3.0.0'
 gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'rubocop', '>= 1.0', '< 2.0'
-# Use sqlite3 as the database for Active Record but change with pg
-gem 'pg', '>= 0.18', '< 2.0'
+# Use sqlite3 as the database for Active Record
+group :development, :test do
+  gem 'sqlite3'
+ end
+ 
+ group :production do
+   gem 'pg'
+ end
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
