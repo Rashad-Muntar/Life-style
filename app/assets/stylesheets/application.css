@@ -61,6 +61,15 @@ body {
   background-size: cover;
 }
 
+
+
+
+
+
+
+
+
+
 .header-img {
   width: 100%;
   background-position: center;
@@ -126,6 +135,7 @@ body {
   margin-top: 50px;
 }
 
+
 .cat-card {
   width: 40vw;
   display: flex;
@@ -139,7 +149,6 @@ body {
 
 .cat-card-content {
   border: 1px solid transparent;
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
   height: 200px;
   width: 100%;
   display: flex;
@@ -215,3 +224,4 @@ body {
 .top-detail .category-name {
   color: rgb(255, 107, 21);
 }
+
