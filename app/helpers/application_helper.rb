@@ -68,9 +68,11 @@ module ApplicationHelper
     @featured.each do |category|
       content << "<div class='index-cat-card'>"
       content << content_tag(:p, category.name)
+      if @article
       content << image_tag(category.articles.last.image)
       content << content_tag(:p, category.articles.pluck(:title).last)
       content << '</div>'
+      end
     end
     content.html_safe
   end
@@ -86,7 +88,7 @@ module ApplicationHelper
       end
     end
     content << "<div class='header-img-wrapper'>"
-    if heighest.image.attached?
+    if @article && heighest.image.attached?
       content << image_tag(heighest.image, class: 'header-img') do
         content << content_tag(:span, heighest.category.name, class: 'img-cat')
         content << content_tag(:span, heighest.title, class: 'heighest.title')
